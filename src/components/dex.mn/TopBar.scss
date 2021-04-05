@@ -1,0 +1,62 @@
+.header{
+    display: flex;
+}
+.logoWrapper {
+    color:white;
+    font-weight: bold;
+    font-size:18px;
+    cursor:pointer;
+}
+.hamburgerMenu{
+    font-size: 20px;
+    margin-right:20px;
+    cursor:pointer;
+}
+.logo {
+    width:25px;
+    margin-right:10px;
+}
+.menu{
+    border-bottom: none;
+    background-color: transparent;
+    display: flex;
+    align-items: flex-end;
+    flex: 1
+}
+.headerEnd{
+    display: flex;
+    align-items: center;
+    padding-right: 5;
+}
+
+.menuItem{
+    display: none !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .menuItem{
+        display: block !important;
+    }
+    .hamburgerMenuCont{
+        display: none !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

@@ -1,47 +1,26 @@
 import React, { useCallback, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Layout, Button, Col, Menu, Popover, Row, Select } from 'antd';
+import { Layout, Menu } from 'antd';
 import { getTradePageUrl } from '../../utils/markets';
 import { useWallet } from '../../utils/wallet';
 import logo from '../../assets/logo.svg';
+import './TopBar.scss';
+import SideMenu from './SideMenu';
+import WalletConnect from './WalletConnect';
+import {
+  MenuOutlined
+} from '@ant-design/icons';
 const { Header } = Layout;
 
-const styles = {
-  header:{
-    display: "flex"
-  },
-  logoWrapper:{
-    color:"white",
-    fontWeight: 600,
-    fontSize:"18px",
-    cursor:"pointer"
-  },
-  logo:{
-    width:"25px",
-    marginRight:"10px"
-  },
-  menu:{
-    borderBottom: 'none',
-    backgroundColor: 'transparent',
-    display: 'flex',
-    alignItems: 'flex-end',
-    flex: 1
-  },
-  headerEnd:{
-    display: 'flex',
-    alignItems: 'center',
-    paddingRight: 5
-  }
-}
-
 const Logo = (props)=>(
-  <div style={styles.logoWrapper}>
-    <img src={logo} alt="" style={styles.logo} />
+  <div className="logoWrapper">
+    <img src={logo} alt="" className="logo" />
     {'DEX.MN'}
   </div>
 );
 
 export default function TopBar_DexMn() {
+  const [sideMenu, sideMenuToggle] = useState(false);
   const { connected, wallet } = useWallet();
   const history = useHistory();
   const location = useLocation();
@@ -64,41 +43,32 @@ export default function TopBar_DexMn() {
   );
   return (
     <Layout>
-      <Header style={styles.header}>
+      <Header className="header">
+        <div className="hamburgerMenuCont">
+          <MenuOutlined className="hamburgerMenu" onClick={()=>sideMenuToggle(!sideMenu)}/>
+        </div>
         <Logo onClick={() => history.push(tradePageUrl)}/>
         <Menu
           mode="horizontal" 
           selectedKeys={[location.pathname]} 
-          style={styles.menu}
+          className="menu"
           onClick={handleClick}
         >
-          <Menu.Item key={tradePageUrl} style={{ margin: '0 10px 0 20px' }}>
+          <Menu.Item className="menuItem" key={tradePageUrl}>
             АРИЛЖАА
           </Menu.Item>
-          <Menu.Item key={tradePageUrl} style={{ margin: '0 10px 0 20px' }}>
-            ТЭСТ МЕНЮ 1
-          </Menu.Item>
-          <Menu.Item key={tradePageUrl} style={{ margin: '0 10px 0 20px' }}>
-            ТЭСТ МЕНЮ 2
-          </Menu.Item>
-          <Menu.Item key={tradePageUrl} style={{ margin: '0 10px 0 20px' }}>
-            ТЭСТ МЕНЮ 3
-          </Menu.Item>
-          <Menu.Item key={tradePageUrl} style={{ margin: '0 10px 0 20px' }}>
-            ТЭСТ МЕНЮ 4
-          </Menu.Item>
           {connected && (!searchFocussed || location.pathname === '/balances') && (
-            <Menu.Item key="/balances" style={{ margin: '0 10px' }}>
-              BALANCES
+            <Menu.Item key="/balances" className="menuItem">
+              ҮЛДЭГДЭЛ
             </Menu.Item>
           )}
           {connected && (!searchFocussed || location.pathname === '/orders') && (
-            <Menu.Item key="/orders" style={{ margin: '0 10px' }}>
-              ORDERS
+            <Menu.Item key="/orders" className="menuItem">
+              ЗАХИАЛГУУД
             </Menu.Item>
           )}
           {!searchFocussed && (
-            <Menu.SubMenu
+            <Menu.SubMenu className="menuItem"
               title="ТУСЛАМЖ"
               onTitleClick={() =>
                 window.open(EXTERNAL_LINKS['/learn'], '_blank')
@@ -153,10 +123,11 @@ export default function TopBar_DexMn() {
             </Menu.SubMenu>
           )}
         </Menu>
-        <div style={styles.headerEnd}>
-          dfhdfhdf
+        <div>
+          <WalletConnect />
         </div>
       </Header>
+      {sideMenu?(<SideMenu />):(null)}
     </Layout>
   )
 }
