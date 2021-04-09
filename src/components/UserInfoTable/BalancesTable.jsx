@@ -38,7 +38,7 @@ export default function BalancesTable({
       });
     } catch (e) {
       notify({
-        message: 'Error settling funds',
+        message: 'Таталт хийхэд алдаа гарлаа',
         description: e.message,
         type: 'error',
       });
@@ -50,7 +50,7 @@ export default function BalancesTable({
   const columns = [
     showMarket
       ? {
-          title: 'Market',
+          title: 'Маркет',
           dataIndex: 'marketName',
           key: 'marketName',
         }
@@ -63,17 +63,17 @@ export default function BalancesTable({
     hideWalletBalance
       ? null
       : {
-          title: 'Wallet Balance',
+          title: 'Валлет үлдэгдэл',
           dataIndex: 'wallet',
           key: 'wallet',
         },
     {
-      title: 'Orders',
+      title: 'Захиалгууд',
       dataIndex: 'orders',
       key: 'orders',
     },
     {
-      title: 'Unsettled',
+      title: 'Татаагүй',
       dataIndex: 'unsettled',
       key: 'unsettled',
     },
@@ -86,7 +86,7 @@ export default function BalancesTable({
             style={{ marginRight: 12 }}
             onClick={() => onSettleFunds(market, openOrders)}
           >
-            Settle {marketName}
+            татах {marketName}
           </Button>
         </div>
       ),
@@ -94,7 +94,7 @@ export default function BalancesTable({
   ].filter((x) => x);
   return (
     <DataTable
-      emptyLabel="No balances"
+      emptyLabel="Үлдэгдэлгүй"
       dataSource={balances}
       columns={columns}
       pagination={false}

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Col, Popover, Row, Select, Typography } from 'antd';
 import styled from 'styled-components';
+import {Description} from '../../components/dex.mn/description';
 import Orderbook from '../../components/Orderbook';
 import UserInfoTable from '../../components/UserInfoTable';
 import StandaloneBalancesDisplay from '../../components/StandaloneBalancesDisplay';
@@ -12,7 +13,7 @@ import {
   useMarketsList,
   useUnmigratedDeprecatedMarkets,
 } from '../../utils/markets';
-import TradeForm from '../../components/TradeForm';
+import TradeForm from '../../components/dex.mn/TradeForm';
 import TradesTable from '../../components/dex.mn/TradesTable';
 import LinkAddress from '../../components/LinkAddress';
 import DeprecatedMarketsInstructions from '../../components/DeprecatedMarketsInstructions';
@@ -232,83 +233,101 @@ function MarketSelector({
     ?.address?.toBase58();
 
   return (
-    <Select
-      showSearch
-      size={'large'}
-      style={{ width: 200 }}
-      placeholder={placeholder || 'Select a market'}
-      optionFilterProp="name"
-      onSelect={onSetMarketAddress}
-      listHeight={400}
-      value={selectedMarket}
-      filterOption={(input, option) =>
-        option?.name?.toLowerCase().indexOf(input.toLowerCase()) >= 0
-      }
-    >
-      {customMarkets && customMarkets.length > 0 && (
-        <OptGroup label="Custom">
-          {customMarkets.map(({ address, name }, i) => (
-            <Option
-              value={address}
-              key={address}
-              name={name}
-              style={{
-                padding: '10px',
-                // @ts-ignore
-                backgroundColor: i % 2 === 0 ? 'rgb(39, 44, 61)' : null,
-              }}
-            >
-              <Row>
-                <Col flex="auto">{name}</Col>
-                {selectedMarket !== address && (
-                  <Col>
-                    <DeleteOutlined
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.nativeEvent.stopImmediatePropagation();
-                        onDeleteCustomMarket && onDeleteCustomMarket(address);
-                      }}
-                    />
-                  </Col>
-                )}
-              </Row>
-            </Option>
-          ))}
-        </OptGroup>
-      )}
-      <OptGroup label="Markets">
-        {markets
-          .sort((a, b) =>
-            extractQuote(a.name) === 'USDT' && extractQuote(b.name) !== 'USDT'
-              ? -1
-              : extractQuote(a.name) !== 'USDT' &&
-                extractQuote(b.name) === 'USDT'
-              ? 1
-              : 0,
-          )
-          .sort((a, b) =>
-            extractBase(a.name) < extractBase(b.name)
-              ? -1
-              : extractBase(a.name) > extractBase(b.name)
-              ? 1
-              : 0,
-          )
-          .map(({ address, name, deprecated }, i) => (
-            <Option
-              value={address.toBase58()}
-              key={address}
-              name={name}
-              style={{
-                padding: '10px',
-                // @ts-ignore
-                backgroundColor: i % 2 === 0 ? 'rgb(39, 44, 61)' : null,
-              }}
-            >
-              {name} {deprecated ? ' (Deprecated)' : null}
-            </Option>
-          ))}
-      </OptGroup>
-    </Select>
+    <>
+    <Row>
+      <Col>
+        <div style={{
+          display:'flex',
+          justifyContent:'center',
+          alignItems:'center',
+          height:'40px',
+          fontWeight:600,
+          marginRight:'10px'
+        }}>
+          Маркет сонгох
+        </div>
+      </Col>
+      <Col>
+        <Select
+        showSearch
+        size={'large'}
+        style={{ width: 200 }}
+        placeholder={placeholder || 'Select a market'}
+        optionFilterProp="name"
+        onSelect={onSetMarketAddress}
+        listHeight={400}
+        value={selectedMarket}
+        filterOption={(input, option) =>
+          option?.name?.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        }
+        >
+          {customMarkets && customMarkets.length > 0 && (
+            <OptGroup label="Custom">
+              {customMarkets.map(({ address, name }, i) => (
+                <Option
+                  value={address}
+                  key={address}
+                  name={name}
+                  style={{
+                    padding: '10px',
+                    // @ts-ignore
+                    backgroundColor: i % 2 === 0 ? 'rgb(39, 44, 61)' : null,
+                  }}
+                >
+                  <Row>
+                    <Col flex="auto">{name}</Col>
+                    {selectedMarket !== address && (
+                      <Col>
+                        <DeleteOutlined
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            e.nativeEvent.stopImmediatePropagation();
+                            onDeleteCustomMarket && onDeleteCustomMarket(address);
+                          }}
+                        />
+                      </Col>
+                    )}
+                  </Row>
+                </Option>
+              ))}
+            </OptGroup>
+          )}
+          <OptGroup label="Markets">
+            {markets
+              .sort((a, b) =>
+                extractQuote(a.name) === 'USDT' && extractQuote(b.name) !== 'USDT'
+                  ? -1
+                  : extractQuote(a.name) !== 'USDT' &&
+                    extractQuote(b.name) === 'USDT'
+                  ? 1
+                  : 0,
+              )
+              .sort((a, b) =>
+                extractBase(a.name) < extractBase(b.name)
+                  ? -1
+                  : extractBase(a.name) > extractBase(b.name)
+                  ? 1
+                  : 0,
+              )
+              .map(({ address, name, deprecated }, i) => (
+                <Option
+                  value={address.toBase58()}
+                  key={address}
+                  name={name}
+                  style={{
+                    padding: '10px',
+                    // @ts-ignore
+                    backgroundColor: i % 2 === 0 ? 'rgb(39, 44, 61)' : null,
+                  }}
+                >
+                  {name} {deprecated ? ' (Deprecated)' : null}
+                </Option>
+              ))}
+          </OptGroup>
+        </Select>
+      </Col>
+    </Row>
+    </>
   );
 }
 
@@ -334,12 +353,13 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
         flexWrap: 'nowrap',
       }}
     >
-      <Col >
-        <UserInfoTable />
-        <TradesTable smallScreen={false} />
+      <Col>
+        <Row><Description/></Row>
+        <Row><UserInfoTable /></Row>
       </Col>
       <Col flex={'360px'} style={{ height: '100%' }}>
         <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
+        <TradesTable smallScreen={false} />
       </Col>
       <Col
         flex="400px"
@@ -355,26 +375,22 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
 const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
-      <Row>
-        <Col flex="auto">
-          <UserInfoTable />
-        </Col>
-      </Row>
+      <Row><Description/></Row>
       <Row
         style={{
           height: '900px',
         }}
       >
         <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
+          <TradesTable smallScreen={true} />
+        </Col>
+        <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
           <Orderbook
             smallScreen={true}
-            depth={13}
+            depth={15}
             onPrice={onPrice}
             onSize={onSize}
           />
-        </Col>
-        <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
-          <TradesTable smallScreen={true} />
         </Col>
         <Col
           flex="400px"
@@ -384,6 +400,11 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
           <StandaloneBalancesDisplay />
         </Col>
       </Row>
+      <Row>
+        <Col flex="auto">
+          <UserInfoTable />
+        </Col>
+      </Row>
     </>
   );
 };
@@ -391,6 +412,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
 const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
+      <Row><Description/></Row>
       <Row>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <TradeForm style={{ flex: 1 }} setChangeOrderRef={onChangeOrderRef} />

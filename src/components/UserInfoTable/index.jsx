@@ -16,26 +16,28 @@ export default function Index() {
     <FloatingElement style={{ flex: 1, paddingTop: 20 }}>
       <Typography>
         <Paragraph style={{ color: 'rgba(255,255,255,0.5)' }}>
-          Make sure to go to Balances and click Settle to send out your funds.
+          Биелсэн захиалгаа татахын тулд "Үлдэгдэлүүд" хэсэгрүү орж татах үйлдэл
+          хийж валлетруугаа аваарай
         </Paragraph>
         <Paragraph style={{ color: 'rgba(255,255,255,0.5)' }}>
-          To fund your wallet, <a href="https://www.sollet.io">sollet.io</a>.
-          You can get SOL from FTX, Binance, BitMax, and others. You can get
-          other tokens from FTX.{' '}
+          Та <a href="https://www.sollet.io">sollet.io</a>. валлетаа цэнэглэхийн
+          тулд FTX, Binance, BitMax, гэх мэт бусад арилжаануудаас SOL авч дансаа
+          цэнэглээрэй. Мөн FTX биржээс олон төрлийн SPL токен авч валлетаа
+          цэнэглэх боломжтой.{' '}
         </Paragraph>
       </Typography>
       <Tabs defaultActiveKey="orders">
-        <TabPane tab="Open Orders" key="orders">
+        <TabPane tab="Нээлттэй захиалгууд" key="orders">
           <OpenOrdersTab />
         </TabPane>
-        <TabPane tab="Recent Trade History" key="fills">
+        <TabPane tab="Арилжааны түүх" key="fills">
           <FillsTable />
         </TabPane>
-        <TabPane tab="Balances" key="balances">
+        <TabPane tab="Үлдэгдэлүүд" key="balances">
           <BalancesTab />
         </TabPane>
         {market && market.supportsSrmFeeDiscounts ? (
-          <TabPane tab="Fee discounts" key="fees">
+          <TabPane tab="Шимтгэл, урамшуулал" key="fees">
             <FeesTable />
           </TabPane>
         ) : null}

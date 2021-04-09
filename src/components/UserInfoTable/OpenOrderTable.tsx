@@ -67,14 +67,14 @@ export default function OpenOrderTable({
 
   const columns = [
     {
-      title: 'Market',
+      title: 'Маркет',
       dataIndex: 'marketName',
       key: 'marketName',
       filters: marketFilter ? marketFilters : undefined,
       onFilter: (value, record) => record.marketName.indexOf(value) === 0,
     },
     {
-      title: 'Side',
+      title: 'Төрөл',
       dataIndex: 'side',
       key: 'side',
       render: (side) => (
@@ -97,14 +97,14 @@ export default function OpenOrderTable({
       showSorterTooltip: false,
     },
     {
-      title: 'Size',
+      title: 'Хэмжээ',
       dataIndex: 'size',
       key: 'size',
       sorter: (a, b) => b.size - a.size,
       showSorterTooltip: false,
     },
     {
-      title: 'Price',
+      title: 'Ханш',
       dataIndex: 'price',
       key: 'price',
       sorter: (a, b) => b.price - a.price,
@@ -134,7 +134,7 @@ export default function OpenOrderTable({
     <Row>
       <Col span={24}>
         <DataTable
-          emptyLabel="No open orders"
+          emptyLabel="Нээлттэй захиалга байхгүй"
           dataSource={dataSource}
           columns={columns}
           pagination={true}

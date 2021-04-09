@@ -10,12 +10,12 @@ export default function FillsTable() {
 
   const columns = [
     {
-      title: 'Market',
+      title: 'Маркет',
       dataIndex: 'marketName',
       key: 'marketName',
     },
     {
-      title: 'Side',
+      title: 'Төрөл',
       dataIndex: 'side',
       key: 'side',
       render: (side) => (
@@ -28,22 +28,22 @@ export default function FillsTable() {
       ),
     },
     {
-      title: `Size`,
+      title: `Хэмжээ`,
       dataIndex: 'size',
       key: 'size',
     },
     {
-      title: `Price`,
+      title: `Ханш`,
       dataIndex: 'price',
       key: 'price',
     },
     {
-      title: `Liquidity`,
+      title: `Ликвидит`,
       dataIndex: 'liquidity',
       key: 'liquidity',
     },
     {
-      title: quoteCurrency ? `Fees (${quoteCurrency})` : 'Fees',
+      title: quoteCurrency ? `Шимтгэл (${quoteCurrency})` : 'Fees',
       dataIndex: 'feeCost',
       key: 'feeCost',
     },

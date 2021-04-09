@@ -37,8 +37,8 @@ export default function WalletBalancesTable({
     try {
       if (!wallet) {
         notify({
-          message: 'Wallet not connected',
-          description: 'Wallet not connected',
+          message: 'Валлет холбоогүй байна',
+          description: 'Валлет холбогдоогүй байна валлетаа холбоно уу',
           type: 'error',
         });
         return;
@@ -46,16 +46,16 @@ export default function WalletBalancesTable({
 
       if (!tokenAccounts || !tokenAccountsConnected) {
         notify({
-          message: 'Error settling funds',
-          description: 'TokenAccounts not connected',
+          message: 'Таталт хийхэд алдаа гарлаа',
+          description: 'Токены данс холбоогүй байна',
           type: 'error',
         });
         return;
       }
       if (!allMarkets || !allMarketsConnected) {
         notify({
-          message: 'Error settling funds',
-          description: 'Markets not connected',
+          message: 'Таталт хийхэд алдаа гарлаа',
+          description: 'Маркет холбогдоогүй байна',
           type: 'error',
         });
         return;
@@ -69,7 +69,7 @@ export default function WalletBalancesTable({
       });
     } catch (e) {
       notify({
-        message: 'Error settling funds',
+        message: 'Таталт хийхэд алдаа гарлаа',
         description: e.message,
         type: 'error',
       });
@@ -97,25 +97,25 @@ export default function WalletBalancesTable({
       ),
     },
     {
-      title: 'Wallet Balance',
+      title: 'Валлет үлдэгдэл',
       dataIndex: 'walletBalance',
       key: 'walletBalance',
       width: '20%',
     },
     {
-      title: 'Open orders total balances',
+      title: 'Нээлттэй захиалгын нийт үлдэгдэл',
       dataIndex: 'openOrdersTotal',
       key: 'openOrdersTotal',
       width: '20%',
     },
     {
-      title: 'Unsettled balances',
+      title: 'Татаагүй үлдэгдэл',
       dataIndex: 'openOrdersFree',
       key: 'openOrdersFree',
       width: '20%',
     },
     {
-      title: 'Selected token account',
+      title: 'Сонгогдсон токены данс',
       key: 'selectTokenAccount',
       width: '20%',
       render: (walletBalance) => (
@@ -133,14 +133,14 @@ export default function WalletBalancesTable({
   return (
     <React.Fragment>
       <DataTable
-        emptyLabel="No balances"
+        emptyLabel="Үлдэгдэлгүй"
         dataSource={walletBalances}
         columns={columns}
         pagination={false}
       />
       {connected && (
         <Button onClick={onSettleFunds} loading={settlingFunds}>
-          Settle all funds
+          Бүгдийг валетруу татах
         </Button>
       )}
     </React.Fragment>

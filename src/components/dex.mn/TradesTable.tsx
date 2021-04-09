@@ -17,8 +17,6 @@ const SizeTitle = styled(Row)`
 export default function PublicTrades({ smallScreen }) {
   const { baseCurrency, quoteCurrency, market } = useMarket();
   const [trades, loaded] = useBonfidaTrades();
-  console.log(trades)
-  console.log(loaded)
   return (
     <FloatingElement
       style={
@@ -26,12 +24,12 @@ export default function PublicTrades({ smallScreen }) {
           ? { flex: 1 }
           : {
               marginTop: '10px',
-              minHeight: '415px',
+              minHeight: '272px',
               maxHeight: 'calc(100vh - 700px)',
             }
       }
     >
-      <Title>Recent Market trades</Title>
+      <Title>Биелсэн захиалгууд</Title>
       <SizeTitle>
         <Col span={8}>Price ({quoteCurrency}) </Col>
         <Col span={8} style={{ textAlign: 'right' }}>
@@ -41,22 +39,19 @@ export default function PublicTrades({ smallScreen }) {
           Time
         </Col>
       </SizeTitle>
-      {(loaded && trades)?(<div>loaded</div>):(<div>loading</div>)}
-      {/* {!!trades && loaded && (
+      {(loaded && trades)?(
         <div
           style={{
             marginRight: '-20px',
             paddingRight: '5px',
             overflowY: 'scroll',
             maxHeight: smallScreen
-              ? 'calc(100% - 75px)'
-              : 'calc(100vh - 800px)',
+            ? 'calc(100% - 75px)'
+            : '160px'
           }}
         >
-          <div>here0</div>
           {trades.map((trade: BonfidaTrade, i: number) => (
             <Row key={i} style={{ marginBottom: 4 }}>
-              <div>here1</div>
               <Col
                 span={8}
                 style={{
@@ -82,7 +77,7 @@ export default function PublicTrades({ smallScreen }) {
             </Row>
           ))}
         </div>
-      )} */}
+      ):(<div>ачаалж байна ...</div>)}
     </FloatingElement>
   );
 }

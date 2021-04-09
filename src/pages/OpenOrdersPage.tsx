@@ -54,7 +54,7 @@ export default function OpenOrdersPage() {
   return (
     <FloatingElement style={{ flex: 1, paddingTop: 10 }}>
       <Button onClick={refreshOpenOrders} loading={!loaded}>
-        Refresh
+        Дахин татах
       </Button>
       <OpenOrderTable
         openOrders={dataSource}

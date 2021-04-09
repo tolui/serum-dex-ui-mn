@@ -32,7 +32,7 @@ export default function StandaloneTokenAccountsSelect({
   const setTokenAccountForCoin = (value) => {
     if (!mint) {
       notify({
-        message: 'Error selecting token account',
+        message: 'Токены данс сонгоход алдаа гарлаа',
         description: 'Mint is undefined',
         type: 'error',
       });
@@ -45,7 +45,7 @@ export default function StandaloneTokenAccountsSelect({
 
   return (
     <React.Fragment>
-      {label && <Col span={8}>Token account:</Col>}
+      {label && <Col span={8}>Токены данс:</Col>}
       <Col span={label ? 13 : 21}>
         <Select
           style={{ width: '100%' }}

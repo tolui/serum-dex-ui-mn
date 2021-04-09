@@ -166,7 +166,7 @@ export default function StandaloneBalancesDisplay() {
               justify="space-between"
               style={{ paddingBottom: 12 }}
             >
-              <Col>Wallet balance:</Col>
+              <Col>Валлет үлдэгдэл:</Col>
               <Col>{balances && balances.wallet}</Col>
             </RowBox>
             <RowBox
@@ -174,7 +174,7 @@ export default function StandaloneBalancesDisplay() {
               justify="space-between"
               style={{ paddingBottom: 12 }}
             >
-              <Col>Unsettled balance:</Col>
+              <Col>Татаагүй үлдэгдэл:</Col>
               <Col>{balances && balances.unsettled}</Col>
             </RowBox>
             <RowBox align="middle" justify="space-around">
@@ -184,21 +184,21 @@ export default function StandaloneBalancesDisplay() {
                   size="large"
                   onClick={() => setBaseOrQuote(baseOrQuote)}
                 >
-                  Deposit
+                  Депозит
                 </ActionButton>
               </Col>
               <Col style={{ width: 150 }}>
                 <ActionButton block size="large" onClick={onSettleFunds}>
-                  Settle
+                  Татах
                 </ActionButton>
               </Col>
             </RowBox>
             <Tip>
-              All deposits go to your{' '}
+              Бүх депозит таны {' '}
               <Link external to={providerUrl}>
                 {providerName}
               </Link>{' '}
-              wallet
+              wallet-руу орно
             </Tip>
           </React.Fragment>
         ),

@@ -39,20 +39,24 @@ export default function DepositDialog({ onClose, baseOrQuote }) {
       onCancel={onClose}
     >
       <div style={{ paddingTop: '20px' }}>
-        <p style={{ color: 'white' }}>Mint address:</p>
+        <p style={{ color: 'white' }}>
+          Mint address (уг хаягруу депозит хийж болохгүй):
+        </p>
         <p style={{ color: 'rgba(255,255,255,0.5)' }}>{coinMint.toBase58()}</p>
         <div>
-          <p style={{ color: 'white' }}>SPL Deposit address:</p>
+          <p style={{ color: 'white' }}>
+            SPL Deposit address (депозит хийх хаяг):
+          </p>
           <p style={{ color: 'rgba(255,255,255,0.5)' }}>
             {account ? (
               account.pubkey.toBase58()
             ) : (
               <>
-                Visit{' '}
                 <Link external to={providerUrl}>
                   {providerName}
                 </Link>{' '}
-                to create an account for this mint
+                wallet үүсгэж тохируулаад дээрх Mint хаягын дагуу SPL токены
+                данс үүсгэнэ үү
               </>
             )}
           </p>
