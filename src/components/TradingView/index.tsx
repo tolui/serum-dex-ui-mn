@@ -32,7 +32,7 @@ export interface ChartContainerProps {
 export interface ChartContainerState {}
 
 export const TVChartContainer = () => {
-  // @ts-ignore
+  //@ts-ignore
   const defaultProps: ChartContainerProps = {
     symbol: 'BTC/USDC',
     interval: '60' as ResolutionString,
@@ -44,6 +44,8 @@ export const TVChartContainer = () => {
     autosize: true,
     studiesOverrides: {},
   };
+
+  console.log("datafeed: ", BONFIDA_DATA_FEED)
 
   const tvWidgetRef = React.useRef<IChartingLibraryWidget | null>(null);
   const { market } = useMarket();

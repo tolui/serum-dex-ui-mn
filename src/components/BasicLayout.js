@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
 import React from 'react';
 import TopBar from './dex.mn/TopBar';
-import { CustomFooter as Footer } from './Footer';
+import { CustomFooter as Footer } from './dex.mn/Footer';
 const { Header, Content } = Layout;
 
 export default function BasicLayout({ children }) {

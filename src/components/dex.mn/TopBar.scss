@@ -4,17 +4,17 @@
 .logoWrapper {
     color:white;
     font-weight: bold;
-    font-size:18px;
+    font-size:28px;
     cursor:pointer;
 }
 .hamburgerMenu{
+    margin-left:-25px;
     font-size: 20px;
     margin-right:20px;
     cursor:pointer;
 }
 .logo {
-    width:25px;
-    margin-right:10px;
+    width:80px;
 }
 .menu{
     border-bottom: none;
@@ -50,6 +50,9 @@
     }
     .hamburgerMenuCont{
         display: none !important;
+    }
+    .logoWrapper {
+        margin-left:-25px;
     }
 }
 

@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import { getTradePageUrl } from '../../utils/markets';
 import { useWallet } from '../../utils/wallet';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 import './TopBar.scss';
 import SideMenu from './SideMenu';
 import WalletConnect from './WalletConnect';
@@ -14,8 +14,7 @@ const { Header } = Layout;
 
 const Logo = (props)=>(
   <div className="logoWrapper">
-    <img src={logo} alt="" className="logo" />
-    {'DEX.MN'}
+    {"DEXMN"}
   </div>
 );
 

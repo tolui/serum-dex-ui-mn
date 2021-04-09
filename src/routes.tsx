@@ -1,5 +1,5 @@
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
-import TradePage from './pages/TradePage';
+import TradePage from './pages/dex.mn/TradePage';
 import OpenOrdersPage from './pages/OpenOrdersPage';
 import React from 'react';
 import BalancesPage from './pages/BalancesPage';
