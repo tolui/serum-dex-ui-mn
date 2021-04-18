@@ -39,9 +39,8 @@ const Wrapper = styled.div`
 `;
 
 export default function TradePage() {
-  const marketAddress = setQuest();
-  //const { marketAddress } = useParams();
-  console.log(marketAddress)
+  setQuest();
+  const { marketAddress } = useParams();
   useEffect(() => {
     if (marketAddress) {
       localStorage.setItem('marketAddress', JSON.stringify(marketAddress));

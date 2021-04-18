@@ -12,6 +12,7 @@ export const ENDPOINTS: EndpointInfo[] = [
     custom: false,
   },
   { name: 'localnet', endpoint: 'http://127.0.0.1:8899', custom: false },
+  // { name: 'mainnet-beta', endpoint: 'http://127.0.0.1:3005', custom: false }
 ];
 
 const accountListenerCount = new Map();
