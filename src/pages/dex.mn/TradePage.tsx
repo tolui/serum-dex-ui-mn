@@ -39,7 +39,6 @@ const Wrapper = styled.div`
 `;
 
 export default function TradePage() {
-  setQuest();
   const { marketAddress } = useParams();
   useEffect(() => {
     if (marketAddress) {
@@ -59,28 +58,6 @@ export default function TradePage() {
       <TradePageInner />
     </MarketProvider>
   );
-}
-
-function setQuest(){
-  const questAddress = "HTQDqzSsXM7bv5q3V4n1EGRBt1tziJWUx7ATfx1ETYKb";
-  const questMarket = {
-    address: questAddress,
-    baseLabel: "QUEST",
-    name: "QUEST/USDT",
-    programId: "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin"
-  }
-  const existingCustomMarkets = localStorage.getItem("customMarkets");
-  let newCustomMarkets:any[] = [];
-  if(existingCustomMarkets){
-    newCustomMarkets = JSON.parse(existingCustomMarkets);
-  }
-  newCustomMarkets.push(questMarket);
-  newCustomMarkets = Array.from(new Set(newCustomMarkets.map(a => a.address)))
-  .map(address => {
-    return newCustomMarkets.find(a => a.address === address)
-  });
-  localStorage.setItem("customMarkets", JSON.stringify(newCustomMarkets));
-  return questAddress;
 }
 
 function TradePageInner() {

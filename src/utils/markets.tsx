@@ -45,10 +45,29 @@ import { sleep } from './utils';
 
 // Used in debugging, should be false in production
 const _IGNORE_DEPRECATED = false;
+const acceptedMarkets = [
+  "SOL/USDT",
+]
+const quest:MarketInfo = {
+  address: new PublicKey("HTQDqzSsXM7bv5q3V4n1EGRBt1tziJWUx7ATfx1ETYKb"),
+  name: "QUEST/USDT",
+  programId:new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin"),
+  deprecated:false,
+  quoteLabel:"USDT",
+  baseLabel:"QUEST"
+}
+let FILTEREDMARKETS:MarketInfo[] = [];
+FILTEREDMARKETS.push(quest);
+MARKETS.map(m=>{
+  if(!m.deprecated && acceptedMarkets.find(accepted=>accepted==m.name)){
+    FILTEREDMARKETS.push(m);
+  }
+});
+
 
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
-  ? MARKETS.map((m) => ({ ...m, deprecated: false }))
-  : MARKETS;
+  ? FILTEREDMARKETS.map((m) => ({ ...m, deprecated: false }))
+  : FILTEREDMARKETS;
 
 export function useMarketsList() {
   return USE_MARKETS.filter(({ name, deprecated }) => !deprecated && !process.env.REACT_APP_EXCLUDE_MARKETS?.includes(name));
@@ -178,7 +197,7 @@ const _SLOW_REFRESH_INTERVAL = 5 * 1000;
 const _FAST_REFRESH_INTERVAL = 1000;
 
 export const DEFAULT_MARKET = USE_MARKETS.find(
-  ({ name, deprecated }) => name === 'SOL/USDT' && !deprecated,
+  ({ name, deprecated }) => name === 'QUEST/USDT' && !deprecated,
 );
 
 export function getMarketDetails(
