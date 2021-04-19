@@ -46,10 +46,22 @@ import { sleep } from './utils';
 // Used in debugging, should be false in production
 const _IGNORE_DEPRECATED = false;
 const acceptedMarkets = [
+  "BTC/USDT",
+  "BTC/USDC",
+  "ETH/USDT",
+  "ETH/USDC",
+  "SRM/USDT",
+  "SRM/USDC",
+  "RAY/USDT",
+  "RAY/USDC",
+  "KIN/USDT",
+  "KIN/USDC",
+  "SRM/SOL",
   "SOL/USDT",
+  "SOL/USDC",
 ]
 const quest:MarketInfo = {
-  address: new PublicKey("HTQDqzSsXM7bv5q3V4n1EGRBt1tziJWUx7ATfx1ETYKb"),
+  address: new PublicKey("7QwEMFeKS8mPACndc9EzpgoqKbQhpBm1N4JCtzjGEyR7"),
   name: "QUEST/USDT",
   programId:new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin"),
   deprecated:false,

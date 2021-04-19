@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Col, Popover, Row, Select, Typography } from 'antd';
 import styled from 'styled-components';
-import {Description} from '../../components/dex.mn/description';
+import { Terms } from '../../components/dex.mn/terms';
 import Orderbook from '../../components/Orderbook';
 import UserInfoTable from '../../components/UserInfoTable';
 import StandaloneBalancesDisplay from '../../components/StandaloneBalancesDisplay';
@@ -354,7 +354,7 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
       }}
     >
       <Col>
-        <Row><Description/></Row>
+        <Row><Terms/></Row>
         <Row><UserInfoTable /></Row>
       </Col>
       <Col flex={'360px'} style={{ height: '100%' }}>
@@ -375,7 +375,7 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
 const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
-      <Row><Description/></Row>
+      <Row><Terms/></Row>
       <Row
         style={{
           height: '900px',
@@ -412,7 +412,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
 const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
-      <Row><Description/></Row>
+      <Row><Terms/></Row>
       <Row>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <TradeForm style={{ flex: 1 }} setChangeOrderRef={onChangeOrderRef} />
