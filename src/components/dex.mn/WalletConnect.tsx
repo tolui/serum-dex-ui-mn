@@ -11,14 +11,14 @@ export default function WalletConnect() {
     <Menu>
       {connected && <LinkAddress shorten={true} address={publicKey} />}
       <Menu.Item key="3" onClick={select}>
-        Валлет солих
+        Хэтэвч солих
       </Menu.Item>
     </Menu>
   );
 
   return (
     <Dropdown.Button onClick={connected ? disconnect : connect} overlay={menu}>
-      {connected ? 'Валлет салгах' : 'Валлет холбох'}
+      {connected ? 'Хэтэвч салгах' : 'Хэтэвч холбох'}
     </Dropdown.Button>
   );
 }

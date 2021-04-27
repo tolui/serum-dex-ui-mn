@@ -166,7 +166,7 @@ export default function StandaloneBalancesDisplay() {
               justify="space-between"
               style={{ paddingBottom: 12 }}
             >
-              <Col>Валлет үлдэгдэл:</Col>
+              <Col>Хэтэвчийн үлдэгдэл:</Col>
               <Col>{balances && balances.wallet}</Col>
             </RowBox>
             <RowBox
@@ -198,7 +198,7 @@ export default function StandaloneBalancesDisplay() {
               <Link external to={providerUrl}>
                 {providerName}
               </Link>{' '}
-              wallet-руу орно
+              хэтэвчрүү орно
             </Tip>
           </React.Fragment>
         ),

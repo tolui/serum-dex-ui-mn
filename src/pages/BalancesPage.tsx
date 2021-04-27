@@ -33,7 +33,7 @@ export default function BalancesPage() {
   return (
     <FloatingElement style={{ flex: 1, paddingTop: 10 }}>
       <Tabs defaultActiveKey="walletBalances">
-        <TabPane tab="Валлетын үлдэгдэл" key="walletBalances">
+        <TabPane tab="Хэтэвчийн үлдэгдэл" key="walletBalances">
           <WalletBalancesTable walletBalances={data} />
         </TabPane>
       </Tabs>

@@ -63,7 +63,7 @@ export default function BalancesTable({
     hideWalletBalance
       ? null
       : {
-          title: 'Валлет үлдэгдэл',
+          title: 'Хэтэвчийн үлдэгдэл',
           dataIndex: 'wallet',
           key: 'wallet',
         },

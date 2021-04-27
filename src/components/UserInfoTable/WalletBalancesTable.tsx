@@ -37,8 +37,8 @@ export default function WalletBalancesTable({
     try {
       if (!wallet) {
         notify({
-          message: 'Валлет холбоогүй байна',
-          description: 'Валлет холбогдоогүй байна валлетаа холбоно уу',
+          message: 'Хэтэвч холбоогүй байна',
+          description: 'Хэтэвч холбогдоогүй байна хэтэвчээ холбоно уу',
           type: 'error',
         });
         return;
@@ -97,7 +97,7 @@ export default function WalletBalancesTable({
       ),
     },
     {
-      title: 'Валлет үлдэгдэл',
+      title: 'Хэтэвчийн үлдэгдэл',
       dataIndex: 'walletBalance',
       key: 'walletBalance',
       width: '20%',

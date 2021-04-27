@@ -55,8 +55,8 @@ export default function DepositDialog({ onClose, baseOrQuote }) {
                 <Link external to={providerUrl}>
                   {providerName}
                 </Link>{' '}
-                wallet үүсгэж тохируулаад дээрх Mint хаягын дагуу SPL токены
-                данс үүсгэнэ үү
+                дээр Wallet-аа үүсгэж тохируулаад дээрх SPL токены дансыг Wallet
+                дээрээ үүсгэсэн байх шаардлагатай
               </>
             )}
           </p>

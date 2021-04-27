@@ -17,13 +17,14 @@ export default function Index() {
       <Typography>
         <Paragraph style={{ color: 'rgba(255,255,255,0.5)' }}>
           Биелсэн захиалгаа татахын тулд "Үлдэгдэлүүд" хэсэгрүү орж татах үйлдэл
-          хийж валлетруугаа аваарай
+          хийж хэтэвчрүүгээ аваарай
         </Paragraph>
         <Paragraph style={{ color: 'rgba(255,255,255,0.5)' }}>
-          Та <a href="https://www.sollet.io">sollet.io</a>. валлетаа цэнэглэхийн
-          тулд FTX, Binance, BitMax, гэх мэт бусад арилжаануудаас SOL авч дансаа
-          цэнэглээрэй. Мөн FTX биржээс олон төрлийн SPL токен авч валлетаа
-          цэнэглэх боломжтой.{' '}
+          Та <a href="https://wallet.dex.mn">wallet.dex.mn</a> дээрх хэтэвчээ
+          цэнэглэхийн тулд Binance, FTX, BitMax, гэх мэт бусад арилжаануудаас
+          SOL худалдан авч дансаа цэнэглээрэй. Мөн FTX биржээс олон төрлийн SPL
+          (Solana сүлжээн дээр ажилладаг токен) токен авч хэтэвчээ цэнэглэх
+          боломжтой.{' '}
         </Paragraph>
       </Typography>
       <Tabs defaultActiveKey="orders">
