@@ -25,6 +25,7 @@ export default function WalletBalancesTable({
     openOrdersTotal: number;
   }[];
 }) {
+  walletBalances = walletBalances.sort(dynamicSort("-walletBalance"));
   const connection = useConnection();
   const { wallet, connected } = useWallet();
   const [selectedTokenAccounts] = useSelectedTokenAccounts();
@@ -83,23 +84,29 @@ export default function WalletBalancesTable({
       title: 'Coin',
       key: 'coin',
       width: '20%',
-      render: (walletBalance) => (
-        <Row align="middle">
-          <a
-            href={`https://explorer.solana.com/address/${walletBalance.mint}`}
-            target={'_blank'}
-            rel="noopener noreferrer"
-          >
-            {walletBalance.coin ||
-              abbreviateAddress(new PublicKey(walletBalance.mint))}
-          </a>
-        </Row>
-      ),
+      render: (walletBalance) => {
+        if(walletBalance.mint == "6ybxMQpMgQhtsTLhvHZqk8uqao7kvoexY6e8JmCTqAB1"){
+          walletBalance.coin = "QUEST";
+        }
+        return (
+          <Row align="middle">
+            <a
+              href={`https://explorer.solana.com/address/${walletBalance.mint}`}
+              target={'_blank'}
+              rel="noopener noreferrer"
+            >
+              {walletBalance.coin ||
+                abbreviateAddress(new PublicKey(walletBalance.mint))}
+            </a>
+          </Row>
+        )
+      },
     },
     {
       title: 'Хэтэвчийн үлдэгдэл',
       dataIndex: 'walletBalance',
       key: 'walletBalance',
+      defaultSortOrder: 'descend',
       width: '20%',
     },
     {
@@ -145,4 +152,19 @@ export default function WalletBalancesTable({
       )}
     </React.Fragment>
   );
+}
+
+function dynamicSort(property) {
+  var sortOrder = 1;
+  if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+  }
+  return function (a,b) {
+      /* next line works with strings and numbers, 
+       * and you may want to customize it to your needs
+       */
+      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result * sortOrder;
+  }
 }
