@@ -88,6 +88,9 @@ export default function WalletBalancesTable({
         if(walletBalance.mint == "6ybxMQpMgQhtsTLhvHZqk8uqao7kvoexY6e8JmCTqAB1"){
           walletBalance.coin = "QUEST";
         }
+        if(walletBalance.mint == "7zsKqN7Fg2s9VsqAq6XBoiShCVohpGshSUvoWBc6jKYh"){
+          walletBalance.coin = "ARDX";
+        }
         return (
           <Row align="middle">
             <a
@@ -161,9 +164,6 @@ function dynamicSort(property) {
       property = property.substr(1);
   }
   return function (a,b) {
-      /* next line works with strings and numbers, 
-       * and you may want to customize it to your needs
-       */
       var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
       return result * sortOrder;
   }

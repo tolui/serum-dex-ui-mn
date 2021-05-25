@@ -41,10 +41,12 @@ import {
 import { WRAPPED_SOL_MINT } from '@project-serum/serum/lib/token-instructions';
 import { Order } from '@project-serum/serum/lib/market';
 import BonfidaApi from './bonfidaConnector';
+import DexMnApi from './dexmnConnector';
 import { sleep } from './utils';
 
 // Used in debugging, should be false in production
 const _IGNORE_DEPRECATED = false;
+//dex.mn implementation
 const acceptedMarkets = [
   "BTC/USDT",
   "BTC/USDC",
@@ -80,6 +82,7 @@ MARKETS.map(m=>{
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? FILTEREDMARKETS.map((m) => ({ ...m, deprecated: false }))
   : FILTEREDMARKETS;
+//dex.mn implementation
 
 export function useMarketsList() {
   return USE_MARKETS.filter(({ name, deprecated }) => !deprecated && !process.env.REACT_APP_EXCLUDE_MARKETS?.includes(name));
@@ -408,7 +411,13 @@ export function useBonfidaTrades() {
     if (!marketAddress) {
       return null;
     }
-    return await BonfidaApi.getRecentTrades(marketAddress);
+    let bonfidaTrade;
+    if(marketAddress === "7QwEMFeKS8mPACndc9EzpgoqKbQhpBm1N4JCtzjGEyR7"){
+      bonfidaTrade = await DexMnApi.getRecentTrades(marketAddress);
+    } else {
+      bonfidaTrade = await BonfidaApi.getRecentTrades(marketAddress);
+    }
+    return bonfidaTrade;
   }
 
   return useAsyncData(
